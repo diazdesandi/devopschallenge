@@ -17,10 +17,11 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Build and deploy Container App
-        uses: azure/container-apps-deploy-action@v1
+name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}/src
-          acrName: ${{ vars.AZURE_ACR_NAME }}
-          containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
-          resourceGroup: ${{ vars.AZURE_CONTAINER_APP_ENVIRONMENT }}
+          acrName: ${{ vars.AZURE_PREFIX }}acr
+          containerAppName: ${{ vars.AZURE_PREFIX }}containerapp
+          resourceGroup: ${{ vars.AZURE_RG }}
+          environment: ${{ vars.AZURE_PREFIX }}containerappenvironment
