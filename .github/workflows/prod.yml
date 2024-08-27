@@ -6,16 +6,17 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '18' # Especifica la versión de Node.js que estás utilizando
+          node-version: '18.7.5' # Especifica la versión de Node.js que estás utilizando
 
       - name: Install dependencies
         run: npm install
@@ -30,7 +31,7 @@ jobs:
         uses: azure/container-apps-deploy-action@v1
         with:
           appSourcePath: ${{ github.workspace }}/src
-          acrName: ${{ vars.AZURE_PREFIX }}acr
-          containerAppName: ${{ vars.AZURE_PREFIX }}containerapp
-          resourceGroup: ${{ vars.AZURE_RG }}
-          environment: ${{ vars.AZURE_PREFIX }}containerappenvironment
+          acrName: ${{ vars.AZURE_ACR_NAME }}
+          containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
+          resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
+          environment: ${{ vars.AZURE_CONTAINER_APP_ENVIRONMENT }}
