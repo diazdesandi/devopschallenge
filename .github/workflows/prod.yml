@@ -35,3 +35,4 @@ jobs:
           containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
           resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
           environment: ${{ vars.AZURE_CONTAINER_APP_ENVIRONMENT }}
+          runtime: 'node|18'
