@@ -32,7 +32,7 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}/src
           acrName: ${{ vars.AZURE_ACR_NAME }}
-          containerAppName: ${{ vars.AZURE_CONTAINER_APP_NAME }}
+          containerAppName: nose12
           resourceGroup: ${{ vars.AZURE_RESOURCE_GROUP }}
           environment: ${{ vars.AZURE_CONTAINER_APP_ENVIRONMENT }}
           runtime: 'node|18'
